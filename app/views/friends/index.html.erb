@@ -6,37 +6,43 @@
       <th>Email</th>
       <th>Phone</th>
       <th>Twitter</th>
+      <th>User ID</th>
       <th colspan="3"></th>
     </tr>
   </thead>
   <tbody>
     <% @friends.each do |friend| %>
-    <tr>
-      <td>
-        <%= friend.first_name %>
-      </td>
-      <td>
-        <%= friend.last_name %>
-      </td>
-      <td>
-        <%= friend.email %>
-      </td>
-      <td>
-        <%= friend.phone %>
-      </td>
-      <td>
-        <%= friend.twitter %>
-      </td>
-      <td>
-        <%= link_to 'Show', friend %>
-      </td>
-      <td>
-        <%= link_to 'Edit', edit_friend_path(friend) %>
-      </td>
-      <td>
-        <%= link_to 'Delete', friend_path(friend), data: { turbo_method: :delete,  turbo_confirm: "are you sure?"}, class: "btn btn-outline-danger btn-sm" %>
-      </td>
-    </tr>
+      <% if friend.user == current_user%>
+      <tr>
+        <td>
+          <%= friend.first_name %>
+        </td>
+        <td>
+          <%= friend.last_name %>
+        </td>
+        <td>
+          <%= friend.email %>
+        </td>
+        <td>
+          <%= friend.phone %>
+        </td>
+        <td>
+          <%= friend.twitter %>
+        </td>
+        <td>
+          <%= friend.user_id %>
+        </td>
+        <td>
+          <%= link_to 'Show', friend %>
+        </td>
+        <td>
+          <%= link_to 'Edit', edit_friend_path(friend) %>
+        </td>
+        <td>
+          <%= link_to 'Delete', friend_path(friend), data: { turbo_method: :delete,  turbo_confirm: "are you sure?"}, class: "btn btn-outline-danger btn-sm" %>
+        </td>
+      </tr>
+      <% end %>
     <% end %>
   </tbody>
 </table>
