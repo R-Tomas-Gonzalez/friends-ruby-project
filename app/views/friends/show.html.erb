@@ -9,6 +9,7 @@
     <%= @friend.twitter %>
   </p>
   <br />
+  <%= link_to 'Delete', @friend, data: { turbo_method: :delete,  turbo_confirm: "are you sure?"}, class: "btn btn-danger" %>
   <%= link_to "Edit this friend", edit_friend_path(@friend), class:"btn btn-secondary" %>
   <%= link_to "Back to friends", friends_path, class:"btn btn-dark" %>
 </div>
